@@ -4,7 +4,6 @@ go 1.16
 
 require (
 	github.com/denisenkom/go-mssqldb v0.9.0 // indirect
-	github.com/ektagarg/gin-gorm-todo-app v0.0.0-20200825050116-7bd1c976e411
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/golang/protobuf v1.4.3 // indirect

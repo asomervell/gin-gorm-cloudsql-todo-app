@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/ektagarg/gin-gorm-todo-app/Config"
-	"github.com/ektagarg/gin-gorm-todo-app/Models"
-	"github.com/ektagarg/gin-gorm-todo-app/Routes"
+	"github.com/asomervell/gin-gorm-cloudsql-todo-app/Config"
+	"github.com/asomervell/gin-gorm-cloudsql-todo-app/Models"
+	"github.com/asomervell/gin-gorm-cloudsql-todo-app/Routes"
 	"github.com/jinzhu/gorm"
 )
 
