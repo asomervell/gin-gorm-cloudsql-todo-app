@@ -2,6 +2,7 @@ package Config
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/jinzhu/gorm"
 )
@@ -10,31 +11,31 @@ var DB *gorm.DB
 
 // DBConfig represents db configuration
 type DBConfig struct {
-	Host     string
-	Port     int
-	User     string
-	DBName   string
-	Password string
+	User                   string
+	Password               string
+	InstanceConnectionName string
+	DBName                 string
+	SocketDir              string
 }
 
 func BuildDBConfig() *DBConfig {
 	dbConfig := DBConfig{
-		Host:     "0.0.0.0",
-		Port:     3306,
-		User:     "root",
-		DBName:   "todos",
-		Password: "rootadmin",
+		User:                   os.Getenv("DB_USER"),
+		Password:               os.Getenv("DB_PASS"),
+		InstanceConnectionName: os.Getenv("INSTANCE_CONNECTION_NAME"),
+		DBName:                 os.Getenv("DB_NAME"),
+		SocketDir:              "cloudsql",
 	}
 	return &dbConfig
 }
 
 func DbURL(dbConfig *DBConfig) string {
 	return fmt.Sprintf(
-		"%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local",
+		"%s:%s@unix(/%s/%s)/%s?parseTime=true",
 		dbConfig.User,
 		dbConfig.Password,
-		dbConfig.Host,
-		dbConfig.Port,
+		dbConfig.SocketDir,
+		dbConfig.InstanceConnectionName,
 		dbConfig.DBName,
 	)
 }
