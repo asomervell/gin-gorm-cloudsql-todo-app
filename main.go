@@ -14,7 +14,6 @@ var err error
 func main() {
 
 	DSN := Config.DbURL(Config.BuildDBConfig())
-	fmt.Println("DSN: ", DSN)
 	Config.DB, err = gorm.Open("mysql", DSN)
 
 	if err != nil {
