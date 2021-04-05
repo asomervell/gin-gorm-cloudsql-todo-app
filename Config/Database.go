@@ -31,7 +31,7 @@ func BuildDBConfig() *DBConfig {
 
 func DbURL(dbConfig *DBConfig) string {
 	return fmt.Sprintf(
-		"%s:%s@unix(/%s/%s)/%s?parseTime=true",
+		"%s:%s@unix(%s/%s)/%s?parseTime=true",
 		dbConfig.User,
 		dbConfig.Password,
 		dbConfig.SocketDir,
