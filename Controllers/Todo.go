@@ -1,7 +1,6 @@
 package Controllers
 
 import (
-	"io/ioutil"
 	"net/http"
 
 	"github.com/asomervell/gin-gorm-cloudsql-todo-app/Models"
@@ -19,11 +18,10 @@ func GetTodos(c *gin.Context) {
 }
 
 func CreateATodo(c *gin.Context) {
-	body, _ := ioutil.ReadAll(c.Request.Body)
-	println("Create: " + string(body))
 
 	var todo Models.Todo
 	c.BindJSON(&todo)
+
 	err := Models.CreateATodo(&todo)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
